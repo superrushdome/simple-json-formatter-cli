@@ -1,10 +1,33 @@
 """
 Json Formatter - Main module.
 """
+import sys
+
+VERSION = "0.2.0"
+
+def run(args):
+    """Main entry point."""
+    print(f"Json Formatter v{VERSION}")
+    if args:
+        print(f"Processing: {', '.join(args)}")
+        process(args)
+    else:
+        print("Usage: python json.py [arguments]")
+        print("Try: python json.py --help")
+
+def process(args):
+    """Process input arguments."""
+    records = []
+    for arg in args:
+        result = arg.strip()
+        if result:
+            records.append(result)
+            print(f"  Processed: {result}")
+    print(f"\nTotal: {len(records)} items processed")
+    return records
 
 def main():
-    print("Json Formatter is running...")
-    print("Version 0.1.0")
+    run(sys.argv[1:])
 
 if __name__ == "__main__":
     main()
